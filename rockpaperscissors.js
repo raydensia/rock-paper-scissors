@@ -2,10 +2,12 @@ const choices = ["Rock", "Paper", "Scissors"];
 let playerSelection;
 let computerSelection;
 
+// Gets a random computer choice
 function getComputerChoice() {
     return choices[Math.floor(Math.random()*3)];
 }
 
+// Prompts player for choice. Re-prompts if choice is invalid.
 function getPlayerChoice() {
     let validInput = false;
     while(!validInput) {
@@ -15,6 +17,7 @@ function getPlayerChoice() {
     return playerSelection;
 }
 
+// Initiates a single round
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
@@ -37,6 +40,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Starts a game of five rounds
 function game(handicap = 0) {
     let result = 0;
     let playerWins = handicap;
