@@ -2,16 +2,47 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Page Title</title>
+        <title>Avatar Rock Paper Scissors</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
         <script src="rockpaperscissors.js" defer></script>
     </head>
-    <body>
-        <h1>Rock Paper Scissors</h1>
+    <body onload="draw();">
+        <h1>Pro-bending Championship Tournament</h1>
+        <h2>Water beats Earth | Earth beats Fire | Fire beats Air | Air beats Water</h2>
         <div id="narrator"></div>
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        
+        
+        <canvas id="arena" width="600" height="300">
+            <img src="./images/pro-bending-arena.webp" width="650 alt="Pro-bending arena>
+        </canvas>
+
+
+
+
+
+        <div class="elements-wrapper">
+            <div class="element-container">
+                <img id="water" class="element-image-water element-image" src="./images/avatar-water.svg" alt="avatar water symbol">
+                <div class="element-name water">水</div>
+            </div>
+            
+            <div class="element-container">
+                <img id="earth" class="element-image-earth element-image" src="./images/avatar-earth.svg" alt="avatar earth symbol">
+                <div class="element-name earth">土</div>    
+            </div>
+
+            <div class="element-container">
+                <img id ="fire" class="element-image-fire element-image" src="./images/avatar-fire.svg" alt="avatar fire symbol">
+                <div class="element-name fire">火</div>    
+            </div>
+            
+            <div class="element-container">
+                <img id="air" class="element-image-air element-image" src="./images/avatar-air.svg" alt="avatar air symbol">
+                <div class="element-name air">气</div>    
+            </div>
+        </div>
+
         <div id="results"></div>
         </script>
     </body>
