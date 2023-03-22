@@ -1,71 +1,58 @@
-const choices = ["Rock", "Paper", "Scissors"];
-let playerSelection;
-let computerSelection;
+const choices = ["rock", "paper", "scissors"];
+let result = 0;
+let playerWins = 0;
+let computerWins = 0;
+let rounds = 0;
 
 // Gets a random computer choice
 function getComputerChoice() {
     return choices[Math.floor(Math.random()*3)];
 }
 
-// Prompts player for choice. Re-prompts if choice is invalid.
-function getPlayerChoice() {
-    let validInput = false;
-    while(!validInput) {
-        playerSelection = prompt("Choose your weapon!");
-        validInput = choices.includes(capitalize(playerSelection));
-    }
-    return playerSelection;
+// Capitalizes first letter in string
+function capitalize(string) {
+    string = string.toLowerCase();
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+
 // Initiates a single round
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
+function playRound(playerSelection) {
+    computerSelection = getComputerChoice();
 
     if (playerSelection == computerSelection) {
-        console.log("It's a draw! Try again");
-        return 0;
+        narrator.textContent = "It's a draw! Try again";
+        rounds += 1;
     }
     else if (
         playerSelection == "rock" && computerSelection == "paper" ||
         playerSelection == "paper" && computerSelection == "scissors" ||
         playerSelection == "scissors" && computerSelection == "rock"
     ) {
-        console.log(`You lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`);
-        return -1;
+        narrator.textContent = `You lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`;
+        computerWins += 1;
+        rounds += 1;
     }
     else {
-        console.log(`You win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`);
-        return 1;
+        narrator.textContent = `You win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`;
+        playerWins += 1;
+        rounds += 1;
+    }
+    if (rounds == 5) {
+        if (computerWins > playerWins)
+            narrator.textContent = "You have lost! Computer is the winner";
+        else if (computerWins < playerWins)
+            narrator.textContent = "You have won!";
+        else
+            narrator.textContent = "It is a draw";
+        buttons.forEach(button => button.disabled = true);
     }
 }
 
-// Starts a game of five rounds
-function game(handicap = 0) {
-    let result = 0;
-    let playerWins = handicap;
-    let computerWins = 0;
-    
-    for (let i = 0; i < 5; i++) {
-        playerSelection = getPlayerChoice();
-        computerSelection = getComputerChoice();
-        result = playRound(playerSelection, computerSelection);
-        if (result == -1)
-            computerWins += 1;
-        else if (result == 1)
-            playerWins += 1;
-    }
-    if (computerWins > playerWins)
-        console.log("You have lost! Computer is the winner");
-    else if (computerWins < playerWins)
-        console.log("You have won!");
-    else
-        console.log("It is a draw")
-}
 
-function capitalize(string) {
-    string = string.toLowerCase();
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
-game();
+const narrator = document.querySelector('#narrator');
+narrator.textContent = "Choose your weapon!";
+
+buttons = document.querySelectorAll("button");
+buttons.forEach(button => button.addEventListener('click', (e) => playRound(e.target.id)));
