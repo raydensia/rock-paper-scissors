@@ -35,6 +35,34 @@ body {
     flex: 1 1;
 }
 
+.element-container.water:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: blue;
+    transition: all .3s;
+}
+
+.element-container.earth:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: green;
+    transition: all .3s;
+}
+
+.element-container.fire:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: red;
+    transition: all .3s;
+}
+
+.element-container.air:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: lightblue;
+    transition: all .3s;
+}
+
 .element-image {
     max-width: 80px;
     max-height: 100px;
@@ -42,9 +70,6 @@ body {
 
 }
 
-.element-image-fire {
-    background-color: red;
-}
 
 canvas {
     border: 1px solid black;
