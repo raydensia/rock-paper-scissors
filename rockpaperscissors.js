@@ -75,6 +75,7 @@ function playRound(playerSelection) {
         narrator.textContent = "It is a draw. Initiating tie breaker!";
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(scoretie, 0, 0);
+        
         // buttons.forEach(button => button.disabled = true);
     }
 }
@@ -86,9 +87,11 @@ narrator.textContent = "Choose your weapon!";
 
 const containers = document.querySelectorAll(".element-container");
 containers.forEach(container => container.addEventListener('mouseover', (e) => mouseOver(e)));
+containers.forEach(container => container.addEventListener('mouseout', (e) => mouseOut(e)));
 
 const buttons = document.querySelectorAll(".element-image");
 buttons.forEach(button => button.addEventListener('mouseover', (e) => mouseOver(e)));
+buttons.forEach(button => button.addEventListener('mouseout', (e) => mouseOut(e)));
 buttons.forEach(button => button.addEventListener('click', (e) => playRound(e.target.id)));
 
 function mouseOver(e) {
@@ -105,6 +108,12 @@ function mouseOver(e) {
     else if (e.target.className.includes('air')) {
         elementsWrapper.style.borderColor = "lightblue";
     }
+}
+
+function mouseOut(e) {
+    let elementsWrapper = document.querySelector(".elements-wrapper");
+    elementsWrapper.style.borderColor = "black";
+
 }
 
 function draw() {
@@ -124,6 +133,8 @@ function draw() {
         ctx.lineTo(500, 90);
         ctx.lineTo(300, 20);
         ctx.clip();
+        ctx.fillStyle = "white";
+        ctx.fill();
         ctx.stroke();
         ctx.save();
 
@@ -142,13 +153,11 @@ function draw() {
         //left
         ctx.beginPath();
         ctx.arc(100, 150, 120, -Math.PI/2, Math.PI/2);
-        // ctx.fill();
         ctx.stroke();
 
         //far left
         ctx.beginPath();
         ctx.arc(100, 150, 60, -Math.PI/2, Math.PI/2);
-        // ctx.fill();
         ctx.stroke();
 
         //right
@@ -191,6 +200,8 @@ ctx0.lineTo(500, 210);
 ctx0.lineTo(500, 90);
 ctx0.lineTo(300, 20);
 ctx0.clip();
+ctx0.fillStyle = "white";
+ctx0.fill();
 ctx0.stroke();
 ctx0.save();
 
@@ -209,13 +220,11 @@ ctx0.stroke();
 //left
 ctx0.beginPath();
 ctx0.arc(100, 150, 120, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctx0.stroke();
 
 //far left
 ctx0.beginPath();
 ctx0.arc(100, 150, 60, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctx0.stroke();
 
 //right
@@ -254,7 +263,10 @@ ctx1.lineTo(300, 280);
 ctx1.lineTo(500, 210);
 ctx1.lineTo(500, 90);
 ctx1.lineTo(300, 20);
+ctx1.globalAlpha = 1;
 ctx1.clip();
+ctx1.fillStyle = "white";
+ctx1.fill();
 ctx1.stroke();
 ctx1.save();
 
@@ -273,13 +285,11 @@ ctx1.stroke();
 //left
 ctx1.beginPath();
 ctx1.arc(100, 150, 120, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctx1.stroke();
 
 //far left
 ctx1.beginPath();
 ctx1.arc(100, 150, 60, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctx1.stroke();
 
 //right
@@ -331,6 +341,8 @@ ctx2.lineTo(500, 210);
 ctx2.lineTo(500, 90);
 ctx2.lineTo(300, 20);
 ctx2.clip();
+ctx2.fillStyle = "white";
+ctx2.fill();
 ctx2.stroke();
 ctx2.save();
 
@@ -408,6 +420,8 @@ ctx1n.lineTo(500, 210);
 ctx1n.lineTo(500, 90);
 ctx1n.lineTo(300, 20);
 ctx1n.clip();
+ctx1n.fillStyle = "white";
+ctx1n.fill();
 ctx1n.stroke();
 ctx1n.save();
 
@@ -485,6 +499,8 @@ ctx2n.lineTo(500, 210);
 ctx2n.lineTo(500, 90);
 ctx2n.lineTo(300, 20);
 ctx2n.clip();
+ctx2n.fillStyle = "white";
+ctx2n.fill();
 ctx2n.stroke();
 ctx2n.save();
 
@@ -563,6 +579,8 @@ ctx3.lineTo(500, 210);
 ctx3.lineTo(500, 90);
 ctx3.lineTo(300, 20);
 ctx3.clip();
+ctx3.fillStyle = "white";
+ctx3.fill();
 ctx3.stroke();
 ctx3.save();
 
@@ -581,13 +599,11 @@ ctx3.stroke();
 //left
 ctx3.beginPath();
 ctx3.arc(100, 150, 120, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctx3.stroke();
 
 //far left
 ctx3.beginPath();
 ctx3.arc(100, 150, 60, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctx3.stroke();
 
 //right
@@ -628,6 +644,8 @@ ctx3n.lineTo(500, 210);
 ctx3n.lineTo(500, 90);
 ctx3n.lineTo(300, 20);
 ctx3n.clip();
+ctx3n.fillStyle = "white";
+ctx3n.fill();
 ctx3n.stroke();
 ctx3n.save();
 
@@ -646,13 +664,11 @@ ctx3n.stroke();
 //left
 ctx3n.beginPath();
 ctx3n.arc(100, 150, 120, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctx3n.stroke();
 
 //far left
 ctx3n.beginPath();
 ctx3n.arc(100, 150, 60, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctx3n.stroke();
 
 //right
@@ -692,6 +708,8 @@ ctxtie.lineTo(500, 210);
 ctxtie.lineTo(500, 90);
 ctxtie.lineTo(300, 20);
 ctxtie.clip();
+ctxtie.fillStyle = "white";
+ctxtie.fill();
 ctxtie.stroke();
 ctxtie.save();
 
@@ -710,13 +728,11 @@ ctxtie.stroke();
 //left
 ctxtie.beginPath();
 ctxtie.arc(100, 150, 120, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctxtie.stroke();
 
 //far left
 ctxtie.beginPath();
 ctxtie.arc(100, 150, 60, -Math.PI/2, Math.PI/2);
-// ctx.fill();
 ctxtie.stroke();
 
 //right
